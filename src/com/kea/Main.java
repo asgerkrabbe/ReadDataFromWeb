@@ -51,16 +51,32 @@ public class Main {
                 }
                 else if (t.contains("rate"))
                 {
-                    t=t.replaceAll("rate=","").replaceAll("\"","");
+                    t=t.replaceAll("rate=","").replaceAll(",",".");
                     System.out.print(" "+t);
                     Rate=t;
                     // Tilføjer den fundne data til listen.
-                    rateinfos.add(new Rateinfo(Code,Desc,Rate));
+                    rateinfos.add(new Rateinfo(Code,Desc, Double.parseDouble(Rate)));
                 }
                 if(t.contains("/>"))
                 {
                     System.out.println();
                 }
+                for (int j = 0; j <rateinfos.size();j++) {
+                    System.out.println(""+rateinfos.get(j));
+                }
+
+                Scanner scanner = new Scanner(System.in);
+                System.out.print("Input code name: ");
+
+                String valutaType=scanner.next();
+
+                for (int j = 0; j < rateinfos.size(); j++) {
+                    if(rateinfos.get(j).getCode().contains(valutaType));
+                    {
+                        System.out.println(rateinfos.get(j));
+                    }
+                }
+
             }
         }
     }
