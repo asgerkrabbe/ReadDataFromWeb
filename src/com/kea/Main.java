@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) throws IOException {
+        // Opretter ArrayList til at indeholde listen med rates i
         ArrayList<Rateinfo> rateinfos=new ArrayList<Rateinfo>();
 
         //Instantiating the URL class
@@ -15,7 +16,8 @@ public class Main {
         //Retrieving the contents of the specified page
         Scanner sc = new Scanner(url.openStream());
         //Instantiating the StringBuffer class to hold the result
-        StringBuffer sb = new StringBuffer();
+        //StringBuffer sb = new StringBuffer();
+        // Tælle variabel i til at tælle med
         int i=0;
         //  Anvendes til at holde code
         String Code="";
@@ -27,7 +29,7 @@ public class Main {
         while(sc.hasNext())
         {
             String t=sc.next();
-            sb.append(t);
+            //sb.append(t);
             i++;
 
             if (i>12 && i<181) {
@@ -35,24 +37,24 @@ public class Main {
                 {
                     t=t.replaceAll("code=","").replaceAll("\"","");
                     Code=t;
-                    System.out.print(t);
+                   // System.out.print(t);
                 }
                 else if(t.contains("desc"))
                 {
                     t=t.replaceAll("desc=","").replaceAll("\"","").replaceAll("�","æ");
                     if(t.contains("Euro")) {
-                        System.out.print(" " + t);
+                   //     System.out.print(" " + t);
                     }else {
                         t=t+" "+ sc.next();
                         t=t.replaceAll("\"","");
-                        System.out.print(" " + t);
+                   //     System.out.print(" " + t);
                     }
                     Desc=t;
                 }
                 else if (t.contains("rate"))
                 {
-                    t=t.replaceAll("rate=","").replaceAll(",",".");
-                    System.out.print(" "+t);
+                    t=t.replaceAll("rate=","").replaceAll("\"","").replaceAll(",",".");
+                   // System.out.print(" "+t);
                     Rate=t;
                     // Tilføjer den fundne data til listen.
                     rateinfos.add(new Rateinfo(Code,Desc, Double.parseDouble(Rate)));
@@ -61,7 +63,8 @@ public class Main {
                 {
                     System.out.println();
                 }
-                for (int j = 0; j <rateinfos.size();j++) {
+                for (int j = 0; j < rateinfos.size();j++)
+                {
                     System.out.println(""+rateinfos.get(j));
                 }
 
@@ -71,12 +74,11 @@ public class Main {
                 String valutaType=scanner.next();
 
                 for (int j = 0; j < rateinfos.size(); j++) {
-                    if(rateinfos.get(j).getCode().contains(valutaType));
+                    if(rateinfos.get(j).getCode().contains(valutaType))
                     {
-                        System.out.println(rateinfos.get(j));
+                        System.out.println(""+rateinfos.get(j));
                     }
                 }
-
             }
         }
     }

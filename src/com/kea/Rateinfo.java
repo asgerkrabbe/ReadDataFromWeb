@@ -23,8 +23,8 @@ public class Rateinfo {
     @Override
     public String toString() {
         return "Rateinfo: " +
-                "code= " + code +
-                ", desc= " + desc +
-                ", rate= " + rate;
+                "Code= " + code +
+                " , Desc= " + desc +
+                " , Rate= " + rate;
     }
 }
