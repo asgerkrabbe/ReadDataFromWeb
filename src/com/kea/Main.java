@@ -26,43 +26,38 @@ public class Main {
         // Indeholder rate
         String Rate="";
 
-        while(sc.hasNext())
-        {
-            String t=sc.next();
+        while(sc.hasNext()) {
+            String t = sc.next();
             //sb.append(t);
             i++;
 
-            if (i>12 && i<181) {
-                if(t.contains("code"))
-                {
-                    t=t.replaceAll("code=","").replaceAll("\"","");
-                    Code=t;
-                   // System.out.print(t);
-                }
-                else if(t.contains("desc"))
-                {
-                    t=t.replaceAll("desc=","").replaceAll("\"","").replaceAll("�","æ");
-                    if(t.contains("Euro")) {
-                   //     System.out.print(" " + t);
-                    }else {
-                        t=t+" "+ sc.next();
-                        t=t.replaceAll("\"","");
-                   //     System.out.print(" " + t);
+            if (i > 12 && i < 181) {
+                if (t.contains("code")) {
+                    t = t.replaceAll("code=", "").replaceAll("\"", "");
+                    Code = t;
+                    // System.out.print(t);
+                } else if (t.contains("desc")) {
+                    t = t.replaceAll("desc=", "").replaceAll("\"", "").replaceAll("�", "æ");
+                    if (t.contains("Euro")) {
+                        //     System.out.print(" " + t);
+                    } else {
+                        t = t + " " + sc.next();
+                        t = t.replaceAll("\"", "");
+                        //     System.out.print(" " + t);
                     }
-                    Desc=t;
-                }
-                else if (t.contains("rate"))
-                {
-                    t=t.replaceAll("rate=","").replaceAll("\"","").replaceAll(",",".");
-                   // System.out.print(" "+t);
-                    Rate=t;
+                    Desc = t;
+                } else if (t.contains("rate")) {
+                    t = t.replaceAll("rate=", "").replaceAll("\"", "").replaceAll(",", ".");
+                    // System.out.print(" "+t);
+                    Rate = t;
                     // Tilføjer den fundne data til listen.
-                    rateinfos.add(new Rateinfo(Code,Desc, Double.parseDouble(Rate)));
+                    rateinfos.add(new Rateinfo(Code, Desc, Double.parseDouble(Rate)));
                 }
-                if(t.contains("/>"))
-                {
+                if (t.contains("/>")) {
                     System.out.println();
                 }
+            }
+        }
                 for (int j = 0; j < rateinfos.size();j++)
                 {
                     System.out.println(""+rateinfos.get(j));
@@ -77,9 +72,8 @@ public class Main {
                     if(rateinfos.get(j).getCode().contains(valutaType))
                     {
                         System.out.println(""+rateinfos.get(j));
+                        System.out.println();
                     }
                 }
-            }
-        }
     }
 }
